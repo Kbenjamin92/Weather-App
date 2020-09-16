@@ -1,36 +1,71 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext } from 'react'
 import './Main.css'
 import { DataContext } from '../context/Context'
 import { MDBInput } from 'mdbreact'
-import { MDBBtn } from "mdbreact";
-
+import { MDBBtn } from 'mdbreact'
 
 const Main = () => {
-    const { getRequest, temp, feelsLike, humidity  } = useContext(DataContext)
-    const [ renderData, setRenderData ] = useState(false)
-
-    const handleWeatherData = () => {
-        setRenderData(true)
-        getRequest()
-    }
+    const { 
+        handleWeatherData, 
+        handleSearch, 
+        tempCity, 
+        feelsLikeCity, 
+        humidityCity, 
+        tempZip, 
+        feelsLikeZip, 
+        humidityZip,
+        renderData,
+        renderCityData,
+        cityValue, 
+        zipCode,
+        handleChange
+      } = useContext(DataContext)
 
     return (
-        <main className='top-container'>
-            <MDBInput label="Search..." />
+        <main>
+            <div className='header-container'>
+                <h1 className='header-title'>Check Your Current Weather!</h1>
+                <p className='sub-header'>Real Time weather data at your finger tips!</p>
+            </div>
+            <div className='top-container'>
+            
+            <MDBInput 
+                className='city-input'
+                label='Search by City...' 
+                type='text'
+                name='cityValue'
+                onChange={handleChange}
+                value={cityValue}
+                />
+            <MDBBtn gradient="blue" onClick={() => handleSearch(cityValue)}>Get Weather by City</MDBBtn>
+            { renderCityData ? 
+                <div className='city-data'>
+                    <p>Temperature: <strong>{tempCity}</strong> Degrees</p>
+                    <p>Feels Like:  <strong>{feelsLikeCity}</strong> Degrees</p>
+                    <p>Humidity:  <strong>{humidityCity}</strong></p>
+                </div>: null
+            }
+
+            <MDBInput 
+                label='Search by Zip Code...' 
+                type='text'
+                name='zipCode'
+                onChange={handleChange}
+                value={zipCode}
+                />
+          <MDBBtn gradient="blue" onClick={() => handleWeatherData(zipCode)}>Get Weather by Zip Code</MDBBtn>
+
             <div>
-                <h1>Check Your Current Weather!</h1>
-                <p>Real Time weather data at your finger tips!</p>
-                <MDBBtn color="elegant" onClick={handleWeatherData}>Weather Data</MDBBtn>
                 {renderData ?  
-                    <div>
-                        <p>Temperature: <strong>{temp}</strong> Degrees</p>
-                        <p>Feels Like:  <strong>{feelsLike}</strong> Degrees</p>
-                        <p>Humidity:  <strong>{humidity}</strong></p>
-                    </div>
-                    : null
+                    <div className='zip-data'>
+                        <p>Temperature: <strong>{tempZip}</strong> Degrees</p>
+                        <p>Feels Like:  <strong>{feelsLikeZip}</strong> Degrees</p>
+                        <p>Humidity:  <strong>{humidityZip}</strong></p>
+                    </div> : null  
                 }
             </div>
-            
+               
+            </div>
         </main>
     )
 }

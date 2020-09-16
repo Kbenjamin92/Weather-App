@@ -1,6 +1,38 @@
+.top-container {
+    margin: 10% 15% 0px 15%;
+}
 
-p {
-    font-size: 20px;
+.header-container {
+    background-image: url('../svg/Clouds.svg');
+    padding: 60px;
+}
+.header-title {
+    font-weight: bold;
+    font-size: 50px;
+}
+.city-data {
+    text-align: start;
+    margin-bottom: 7%;
+    margin-right: 53%;
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 23px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-image: url('../svg/Clouds.svg');
+
+}
+.zip-data {
+    text-align: start;
+    margin-bottom: 7%;
+    margin-right: 53%;
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 23px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-image: url('../svg/Clouds.svg');
+}
+.sub-header {
+    font-size: 30px;
 }
 .weather-button {
     padding: 10px;
@@ -16,4 +48,59 @@ p {
     background-color: #000;
     color: white;
     border: white;
+}
+
+@media only screen and (max-width: 800px) {
+    .top-container {
+        margin: 19% 15% 0px 15%;
+
+    }
+    .header-container {
+        background-image: url('../svg/Clouds.svg');
+        padding: 12px;
+    }
+    .header-title {
+        font-weight: bold;
+        font-size: 40px;
+    }
+    .city-data {
+        text-align: start;
+        margin-bottom: 7%;
+        margin-right: 1px;
+        margin-top: 30px;
+        padding: 13px;
+        font-size: 23px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        background-image: url('../svg/Clouds.svg');
+    
+    }
+    .zip-data {
+        text-align: start;
+        margin-bottom: 7%;
+        margin-right: 1px;
+        margin-top: 30px;
+        padding: 13px;
+        font-size: 23px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        background-image: url('../svg/Clouds.svg');
+    }
+    .sub-header {
+        font-size: 20px;
+    }
+    .weather-button {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #333;
+        color: white;
+        border: white;
+    }
+    
+    .weather-button:hover {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #000;
+        color: white;
+        border: white;
+    }
+   
 }

@@ -5,31 +5,68 @@ export const DataContext = React.createContext()
 
 export default function DataProvider(props) {
     const initialState = {
-        temp: 0,
-        feelsLike: 0,
-        humidity: 0,
+        tempCity: 0,
+        feelsLikeCity: 0,
+        humidityCity: 0,
+        tempZip: 0,
+        feelsLikeZip: 0,
+        humidityZip: 0,
+        renderData: false,
+        renderCityData: false,
+        cityValue: '', 
+        zipCode: ''
 
     }
     const [ state, setState ] = useState(initialState)
-
-    const getRequest = () => {
-        axios.get('http://api.openweathermap.org/data/2.5/weather?zip=08619,us&appid=b191411ee016bb7fb43f84f1daa86fca')
+    
+    //get weather via zip code
+    const handleWeatherData = (zipCode) => {
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=b191411ee016bb7fb43f84f1daa86fca`)
         .then(res => {
             setState( prevState => ({
                 ...prevState,
-                temp: Math.round(res.data.main.temp * 9/5 - 459.67),
-                feelsLike: Math.round(res.data.main.feels_like * 9/5 - 459.67),
-                humidity: res.data.main.humidity
+                tempZip: Math.round(res.data.main.temp * 9/5 - 459.67),
+                feelsLikeZip: Math.round(res.data.main.feels_like * 9/5 - 459.67),
+                humidityZip: res.data.main.humidity,
+                renderData: true,
+                zipCode: ''
             }))
+           
         })
         .catch(err => console.log(err))
         
       }
+    // get weather via city name
+    const handleSearch = (usersCity) => {
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${usersCity}&appid=b191411ee016bb7fb43f84f1daa86fca`)
+        .then(res => {
+            console.log(res.data.main.temp)
+            setState( prevState => ({
+                ...prevState,
+                tempCity: Math.round(res.data.main.temp * 9/5 - 459.67),
+                feelsLikeCity: Math.round(res.data.main.feels_like * 9/5 - 459.67),
+                humidityCity: res.data.main.humidity,
+                renderCityData: true,
+                cityValue: ''
+            }))
+        })
+        .catch(err => console.log(err))
+    }
+    
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setState(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+    }
 
     return (
         <DataContext.Provider value={{
             ...state,
-            getRequest,
+            handleWeatherData,
+            handleSearch,
+            handleChange
 
         }}>
         { props.children }

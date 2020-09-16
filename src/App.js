@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import Main from './main/Main'
 import NavBarComp from './nav/NavBarComp'
 import About from './about/About'
-import Contact from './contact/Contact'
+import Footer from './footer/Footer'
 import { Switch, Route } from 'react-router-dom'
 
 function App() {
@@ -16,9 +17,8 @@ function App() {
       <Switch>
           <Route exact path='/' component={Main} /> 
           <Route path='/about' component={About}/>
-          <Route path='/contact' component={Contact}/>
       </Switch>
-
+    <Footer />
     </div>
   );
 }

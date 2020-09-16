@@ -1,4 +1,19 @@
 .detail {
-    margin: 10px 14% 10px 14%;
+    margin: 10px 14% 50px 14%;
     font-size: 18px;
+}
+.about-container {
+    margin-top: 50px;
+}
+.image {
+    height: 500px;
+}
+@media only screen and (max-width: 800px) {
+    .detail {
+        margin: 10px 10% 50px 10%;
+        font-size: 18px;
+    }
+    .image {
+        height: 300px;
+    }
 }
