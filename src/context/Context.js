@@ -21,7 +21,7 @@ export default function DataProvider(props) {
     
     //get weather via zip code
     const handleWeatherData = (zipCode) => {
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=b191411ee016bb7fb43f84f1daa86fca`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=b191411ee016bb7fb43f84f1daa86fca`)
         .then(res => {
             setState( prevState => ({
                 ...prevState,
@@ -38,7 +38,7 @@ export default function DataProvider(props) {
       }
     // get weather via city name
     const handleSearch = (usersCity) => {
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${usersCity}&appid=b191411ee016bb7fb43f84f1daa86fca`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${usersCity}&appid=b191411ee016bb7fb43f84f1daa86fca`)
         .then(res => {
             console.log(res.data.main.temp)
             setState( prevState => ({
