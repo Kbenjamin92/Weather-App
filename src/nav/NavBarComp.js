@@ -11,8 +11,8 @@ const NavBarComp = () => {
                 </div>
         
                 <div className='link-container'>
-                    <Link to='about' className='about-link'><h1>About</h1></Link>
-                    <Link to='contact' className='contact-link'><h1>Contact</h1></Link>
+                    <Link to='about' className='about-link'><h3>About</h3></Link>
+                    <Link to='contact' className='contact-link'><h3>Contact</h3></Link>
                 </div>
                 
             </div>
