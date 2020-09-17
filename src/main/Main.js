@@ -18,7 +18,9 @@ const Main = () => {
         renderCityData,
         cityValue, 
         zipCode,
-        handleChange
+        handleChange,
+        userCity,
+        userZip
       } = useContext(DataContext)
 
     return (
@@ -40,6 +42,8 @@ const Main = () => {
             <MDBBtn gradient="blue" onClick={() => handleSearch(cityValue)}>Get Weather by City</MDBBtn>
             { renderCityData ? 
                 <div className='city-data'>
+                    <h3>{userCity}</h3>
+                    <hr/>
                     <p>Temperature: <strong>{tempCity}</strong> Degrees</p>
                     <p>Feels Like:  <strong>{feelsLikeCity}</strong> Degrees</p>
                     <p>Humidity:  <strong>{humidityCity}</strong></p>
@@ -58,6 +62,8 @@ const Main = () => {
             <div>
                 {renderData ?  
                     <div className='zip-data'>
+                        <h3>{userZip}</h3>
+                        <hr/>
                         <p>Temperature: <strong>{tempZip}</strong> Degrees</p>
                         <p>Feels Like:  <strong>{feelsLikeZip}</strong> Degrees</p>
                         <p>Humidity:  <strong>{humidityZip}</strong></p>

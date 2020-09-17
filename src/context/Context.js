@@ -14,7 +14,9 @@ export default function DataProvider(props) {
         renderData: false,
         renderCityData: false,
         cityValue: '', 
-        zipCode: ''
+        zipCode: '',
+        userCity: '',
+        userZip: ''
 
     }
     const [ state, setState ] = useState(initialState)
@@ -29,7 +31,8 @@ export default function DataProvider(props) {
                 feelsLikeZip: Math.round(res.data.main.feels_like * 9/5 - 459.67),
                 humidityZip: res.data.main.humidity,
                 renderData: true,
-                zipCode: ''
+                zipCode: '',
+                userZip: zipCode
             }))
            
         })
@@ -40,14 +43,14 @@ export default function DataProvider(props) {
     const handleSearch = (usersCity) => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${usersCity}&appid=b191411ee016bb7fb43f84f1daa86fca`)
         .then(res => {
-            console.log(res.data.main.temp)
             setState( prevState => ({
                 ...prevState,
                 tempCity: Math.round(res.data.main.temp * 9/5 - 459.67),
                 feelsLikeCity: Math.round(res.data.main.feels_like * 9/5 - 459.67),
                 humidityCity: res.data.main.humidity,
                 renderCityData: true,
-                cityValue: ''
+                cityValue: '',
+                userCity: usersCity
             }))
         })
         .catch(err => console.log(err))
