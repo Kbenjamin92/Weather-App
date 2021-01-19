@@ -70,7 +70,6 @@ export default function DataProvider(props) {
             handleWeatherData,
             handleSearch,
             handleChange
-
         }}>
         { props.children }
         </DataContext.Provider>

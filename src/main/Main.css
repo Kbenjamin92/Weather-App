@@ -4,6 +4,7 @@
 
 .header-container {
     background-image: url('../svg/Clouds.svg');
+    max-width: 100%;
     padding: 60px;
 }
 .header-title {
